@@ -36,8 +36,12 @@ Accordingly, the parameters you fill are used for the following:
 The MySQL server database is configured be accessed externaly by its static IP upon creation with the appropriate ports opened.
 
 The remaining Steps would be for you to Create the approriate Database and its admin users like the below:
+<br/>
 $ mysql -u root -p
+<br/>
 $ CREATE DATABASE TestDB;
+<br/>
 $ GRANT ALL ON TestDB.* TO 'adminuser'@'%' IDENTIFIED BY 'pass@word1';
+<br/>
 $ exit
 
