@@ -567,7 +567,7 @@
       "properties": {
 
         "networkSecurityGroup": {
-                    "id": "[concat('Microsoft.Network/networkSecurityGroups/', variables('nsgName'))]"
+                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgName'))]"
                 },
 
         "ipConfigurations": [
