@@ -7,7 +7,7 @@ It creates the following:
 <br/>
 1) An Ubuntu VM
 <br/>
-2) P30 Data Disk attached (1TB)
+2) P30 (1TB) SSD Data Disk attached
 <br/>
 3) Disk mounted and configured by LVM
 <br/>
@@ -16,7 +16,28 @@ It creates the following:
 5) Silent install of the latest MySQL server
 <br/>
 6) Network Security Group with MySQL and SSH ports opened
+<br>
+7) Creates a brand new Virtual Network (Working on having the option to select an existing one)
 
-The root password is defined by yourself during the deployment.
+Accordingly, the parameters you fill are used for the following:
+<br/>
+1) New or Existing Resource Group
+<br/>
+2) VM Admin Username
+<br/>
+3) VM user Password
+<br/>
+4) VM MySQL Password
+<br/>
+5) Ubunut Version (14.04 TLS or 16.04 TLS)
+<br/>
+6) VM Size (Standard DS3_V2 to DS15_V2)
 
-The MySQL server database can be accessed only from localhost by default, you should update the privileges settings based on your own requirement.
+The MySQL server database is configured be accessed externaly by its static IP upon creation with the appropriate ports opened.
+
+The remaining Steps would be for you to Create the approriate Database and its admin users like the below:
+$ mysql -u root -p
+$ CREATE DATABASE TestDB;
+$ GRANT ALL ON TestDB.* TO 'adminuser'@'%' IDENTIFIED BY 'pass@word1';
+$ exit
+
