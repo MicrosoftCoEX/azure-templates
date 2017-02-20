@@ -1,5 +1,6 @@
 mysqlPassword=$1
 
+sudo su
 # Install latest CFS
 sudo apt-get -y install xfsprogs 
 
