@@ -36,6 +36,9 @@ sudo apt-get update
 sudo apt-get -y install mysql-server
 sudo mysqladmin -u root password "$mysqlPassword"
 
+#####Exposing the Server#######
+sed -e '/bind-address/ s/^#*/#/' -i /etc/mysql/mysql.conf.d/mysqld.cnf
+
 #####Performance Tuning"
 sudo echo "max_connections = 5000
 query_cache_size = 0
