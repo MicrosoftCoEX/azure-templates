@@ -127,7 +127,7 @@
 
       "type": "string",
 
-      "defaultValue": "https://raw.githubusercontent.com/MicrosoftCoEX/azure-templates/master/MySQLVM-Template/scripts/StartUpScript.sh",
+      "defaultValue": "https://raw.githubusercontent.com/MicrosoftCoEX/azure-templates/master/MySQLVM-Template",
 
       "metadata": {
 
