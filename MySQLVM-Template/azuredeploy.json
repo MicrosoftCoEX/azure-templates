@@ -441,7 +441,7 @@
 
           "fileUris": [
 
-            "[concat(parameters('_artifactsLocation'),'/scripts/install_mysql_server_5.6.sh')]"
+            "[concat(parameters('_artifactsLocation'),'/scripts/StartUpScript.sh')]"
 
           ]
 
@@ -449,7 +449,7 @@
 
         "protectedSettings": {
 
-          "commandToExecute": "[concat('bash install_mysql_server_5.6.sh ', parameters('mysqlPassword'))]"
+          "commandToExecute": "[concat('bash StartUpScript.sh ', parameters('mysqlPassword'))]"
 
         }
 
