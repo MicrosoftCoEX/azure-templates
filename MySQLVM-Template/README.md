@@ -4,10 +4,15 @@
 
 This template uses the Azure Linux CustomScript extension to deploy a MySQL server. 
 It creates the following:
+<br/>
 1) An Ubuntu VM
+<br/>
 2) P30 Data Disk attached (1TB)
+<br/>
 3) Disk attached and configured by LVM
+<br/>
 4) Perfoemance Recommandations applied per Microsoft Recommendations: URL=
+<br/>
 5) Silent install of the latest MySQL server
 
 The root password is defined by yourself during the deployment.
