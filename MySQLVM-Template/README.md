@@ -9,11 +9,13 @@ It creates the following:
 <br/>
 2) P30 Data Disk attached (1TB)
 <br/>
-3) Disk attached and configured by LVM
+3) Disk mounted and configured by LVM
 <br/>
 4) Perfoemance Recommandations applied per Microsoft Recommendations: URL=
 <br/>
 5) Silent install of the latest MySQL server
+<br/>
+6) Network Security Group with MySQL and SSH ports opened
 
 The root password is defined by yourself during the deployment.
 
