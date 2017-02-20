@@ -558,7 +558,7 @@
         "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]",
 
 
-        "[concat('Microsoft.Network/networkSecurityGroups/', variables('nsgName'))]"
+        "[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgName'))]"
 
       ],
 
@@ -566,17 +566,10 @@
 
       "properties": {
 
-        "networkSecurityGroup": {
-                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgName'))]"
-                },
+      
 
         "ipConfigurations": [
-
-
-
-          {
-
-
+         {
 
             "name": "ipconfig1",
 
@@ -622,9 +615,11 @@
 
 
 
-        ]
+        ],
 
-
+        "networkSecurityGroup": {
+                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgName'))]"
+                }
 
       }
 
