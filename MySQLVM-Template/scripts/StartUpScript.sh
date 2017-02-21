@@ -1,11 +1,11 @@
 mysqlPassword=$1
 
+#Switch to Root
 sudo su
 # Install latest CFS
 sudo apt-get -y install xfsprogs 
 
-# Format Disk
-
+#######Format Disk#######
 sudo echo "n
 p
 
@@ -24,16 +24,13 @@ sudo mkfs.xfs /dev/vg00/lv00
 sudo mkdir -p /var/lib/mysql
 
 #Get the mounted device UUID by typing: 
-sudo blkid | grep -i "/dev/mapper/vg00-lv00"
-sudo UUID=`sudo blkid | grep -i "/dev/mapper/vg00-lv00" | cut -d ' ' -f2`
+UUID=`sudo blkid | grep -i "/dev/mapper/vg00-lv00" | cut -d ' ' -f2`
 sudo echo "${UUID} /var/lib/mysql xfs defaults,nofail,noatime 0 0" >> /etc/fstab
 # Mount the new drive
 sudo mount -a
 
-
-sudo apt-get -y update
-
 #####install mysql-server######
+sudo apt-get -y update
 sudo apt-get -y install mysql-server
 sudo mysqladmin -u root password "$mysqlPassword"
 
