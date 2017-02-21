@@ -18,6 +18,8 @@ It creates the following:
 6) Network Security Group with MySQL and SSH ports opened
 <br>
 7) Creates a brand new Virtual Network (Working on having the option to select an existing one)
+<br/>
+8) IP is set to be Static (In Progress)
 
 Accordingly, the parameters you fill are used for the following:
 <br/>
