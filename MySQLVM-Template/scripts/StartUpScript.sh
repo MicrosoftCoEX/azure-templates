@@ -31,6 +31,8 @@ sudo mount -a
 
 #####install mysql-server######
 sudo apt-get -y update
+echo "mysql-server mysql-server/root_password password $mysqlPassword" | sudo debconf-set-selections 
+echo "mysql-server mysql-server/root_password_again password $mysqlPassword" | sudo debconf-set-selections 
 sudo apt-get -y install mysql-server
 sudo mysqladmin -u root password "$mysqlPassword"
 
