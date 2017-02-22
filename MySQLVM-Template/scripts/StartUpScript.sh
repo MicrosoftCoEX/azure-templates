@@ -38,10 +38,12 @@ sudo mysqladmin -u root password "$mysqlPassword"
 
 #####Exposing the Server#######
 sed -e '/bind-address/ s/^#*/#/' -i /etc/mysql/mysql.conf.d/mysqld.cnf
-sed -e '/query_cache_size/ s/^#*/#/' -i /etc/mysql/mysql.conf.d/mysqld.cnf
-sed -e '/query_cache_limit/ s/^#*/#/' -i /etc/mysql/mysql.conf.d/mysqld.cnf
 
 #####Performance Tuning#######
+sed -e '/query_cache_size/ s/^#*/#/' -i /etc/mysql/mysql.conf.d/mysqld.cnf
+sed -e '/query_cache_limit/ s/^#*/#/' -i /etc/mysql/mysql.conf.d/mysqld.cnf
+sed -e '/thread_cache_size/ s/^#*/#/' -i /etc/mysql/mysql.conf.d/mysqld.cnf
+
 sudo echo "max_connections = 5000
 query_cache_size = 0
 query_cache_limit = 64M
@@ -56,7 +58,6 @@ innodb_autoextend_increment=512
 innodb_log_buffer_size = 128M
 thread_cache_size = 32
 table_open_cache = 1024
-max_allowed_packet = 16M
 max_heap_table_size = 256M
 read_buffer_size = 2M" >> /etc/mysql/mysql.conf.d/mysqld.cnf
 
