@@ -2,7 +2,7 @@
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoftCoEX%2Fazure-templates%2Fmaster%2FMySQLVM-Template%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
 
-This template uses the Azure Linux CustomScript extension to deploy a MySQL server. 
+This template uses the Azure Linux CustomScript extension to deploy a MySQL server, exection time is less than 5 minutes.
 It creates the following:
 <br/>
 1) An Ubuntu VM
