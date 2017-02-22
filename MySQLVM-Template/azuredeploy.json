@@ -292,7 +292,7 @@
 
 
 
-    "OSDiskName": "osdiskforlinuxsimple",
+    "OSDiskName": "osdiskforlinux",
 
 
 
@@ -315,7 +315,7 @@
 
 
 
-    "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'standardsa')]",
+    "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'premiumsa')]",
 
 
 
@@ -331,7 +331,7 @@
 
 
 
-    "publicIPAddressType": "Dynamic",
+    "publicIPAddressType": "Static",
 
 
 
