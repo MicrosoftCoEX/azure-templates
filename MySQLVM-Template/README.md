@@ -19,7 +19,7 @@ It creates the following:
 <br>
 7) Creates a brand new Virtual Network (Working on having the option to select an existing one)
 <br/>
-8) IP is set to be Static (In Progress)
+8) IP is set to be Static
 
 Accordingly, the parameters you fill are used for the following:
 <br/>
