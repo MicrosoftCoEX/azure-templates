@@ -2,7 +2,7 @@
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoftCoEX%2Fazure-templates%2Fmaster%2FMySQLVM-Template%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
 
-This template uses deploys a Standalone MySQL server on a linux VM with a custom script extension to mount a data disk, install mysql server and apply some performance enhancmenets, <b>Exection time is less than 5 minutes</b>.
+This template uses deploys a Standalone MySQL server on a linux VM with a custom script extension to mount a data disk, install mysql server and apply some performance enhancmenets, <b>Execution time is less than 5 minutes</b>.
 <br/>
 <br/>
 This Template creates the following:
