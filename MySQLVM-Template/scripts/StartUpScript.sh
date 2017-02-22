@@ -39,7 +39,7 @@ sudo mysqladmin -u root password "$mysqlPassword"
 #####Exposing the Server#######
 sed -e '/bind-address/ s/^#*/#/' -i /etc/mysql/mysql.conf.d/mysqld.cnf
 
-#####Performance Tuning"
+#####Performance Tuning#######
 sudo echo "max_connections = 5000
 query_cache_size = 0
 query_cache_limit = 64M
@@ -75,5 +75,7 @@ sudo ulimit -SHu 65536
 sudo echo “ulimit -SHn 65536” >>/etc/rc.local
 sudo echo “ulimit -SHu 65536” >>/etc/rc.local
 
+#######Finalization#######
+service mysql restart
 
 
