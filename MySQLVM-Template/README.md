@@ -11,7 +11,7 @@ It creates the following:
 <br/>
 3) Disk mounted and configured by LVM
 <br/>
-4) Performance Recommandations applied per <a href="https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-linux-classic-optimize-mysql?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json"  Microsoft Recommendations </a>
+4) Performance Recommandations applied per <a href="https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-linux-classic-optimize-mysql?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json">  Microsoft Recommendations </a>
 <br/>
 5) Silent install of the latest MySQL server
 <br/>
