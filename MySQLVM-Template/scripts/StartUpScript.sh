@@ -46,16 +46,16 @@ sudo echo "max_connections = 5000
 query_cache_size = 0
 query_cache_limit = 64M
 innodb_buffer_pool_size = 10G 
-#innodb_thread_concurrenc= 2 * [numberofCPUs] + 2
-innodb_thread_concurrency = 6
+
+innodb_thread_concurrency = 6 # = 2 * [numberofCPUs] + 2
 innodb_flush_log_at_trx_commit = 2
 innodb_file_per_table = 1
 
-innodb_log_file_size = 512M
+#innodb_log_file_size = 512M
 innodb_autoextend_increment=512
 innodb_log_buffer_size = 128M
 thread_cache_size = 32
-table_open_cache            = 1024
+table_open_cache = 1024
 max_allowed_packet = 16M
 max_heap_table_size = 256M
 read_buffer_size = 2M" >> /etc/mysql/mysql.conf.d/mysqld.cnf
