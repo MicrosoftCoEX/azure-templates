@@ -1,3 +1,4 @@
+
 # MySQL Server on Ubuntu VM - Perfomance Tuned and with DataDisks Attached
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoftCoEX%2Fazure-templates%2Fmaster%2FMySQLVM-Template%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
@@ -41,11 +42,9 @@ The MySQL server database is configured be accessed externaly by its static IP u
 
 The remaining Steps would be for you to Create the approriate Database and its admin users like the below:
 <br/>
+```bash
 $ mysql -u root -p
-<br/>
 $ CREATE DATABASE TestDB;
-<br/>
 $ GRANT ALL ON TestDB.* TO 'adminuser'@'%' IDENTIFIED BY 'pass@word1';
-<br/>
 $ exit
-
+```
