@@ -55,7 +55,9 @@ $ exit
 1) Instal MySQL Workbench
 <br/>
 2) Create a new connection
+<br/>
     HostName: Type in the VM IP (Obtained from the Portal)
+    <br/>
     Username and Password: Type in the ones you created form the above step that have access to a certain database or just login in with the root account
 <br/>
 3) You will be successfully connected to the Server and start working on your Database
