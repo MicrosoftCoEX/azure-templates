@@ -1,3 +1,4 @@
+
 # MySQL Server on Ubuntu VM - Perfomance Tuned and with DataDisks Attached
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoftCoEX%2Fazure-templates%2Fmaster%2FMySQLVM-Template%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> <a href="http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoftCoEX%2Fazure-templates%2Fmaster%2FMySQLVM-Template%2Fazuredeploy.json" target="_blank">
@@ -49,3 +50,14 @@ $ CREATE DATABASE TestDB;
 $ GRANT ALL ON TestDB.* TO 'adminuser'@'%' IDENTIFIED BY 'pass@word1';
 $ exit
 ```
+
+## Validate
+1) Instal MySQL Workbench
+<br/>
+2) Create a new connection
+<br/>
+3) For the Hostname: Type in the VM IP (Obtained from the Portal)
+<br/>
+3) For the Username and Password, Type in the ones you created form the above step that have access to a certain database or just login in with the root account
+<br/>
+4) You will be successfully connected to the Server and start working on your Database
