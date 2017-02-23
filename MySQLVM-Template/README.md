@@ -6,6 +6,7 @@
 This template uses deploys a Standalone MySQL server on a linux VM with a custom script extension to mount a data disk, install mysql server and apply some performance enhancmenets, <b>Execution time is less than 5 minutes</b>.
 <br/>
 <br/>
+## Template Details
 This Template creates the following:
 <br/>
 1) An Ubuntu VM
@@ -26,29 +27,18 @@ This Template creates the following:
 
 ## Parameters
 Accordingly, the parameters you fill are used for the following:
-<br/>
-1) New or Existing Resource Group
-<br/>
-2) VM Admin Username
-<br/>
-3) VM user Password
-<br/>
-4) VM MySQL Password
-<br/>
-5) Ubunut Version (14.04 TLS or 16.04 TLS)
-<br/>
-6) VM Size (Standard DS3_V2 to DS15_V2)
 
 | Name| Type           | Description |
 | ------------- | ------------- | ------------- |
+| vmName  | String | Name for the Virtual Machine |
 | adminUsername  | String | Username for SSH Login |
 | adminPassword | SecureString | Password for the SSH Login |
 | mysqlPasswrd | String | Password for the MySQL Server |
 | Ubuntu Version  | List | 14.04 TLS / 16.04 TLS | 
 | VM Size | List | Standard DS3_V2 to DS15_V2 |
 
-The MySQL server database is configured be accessed externaly by its static IP upon creation with the appropriate ports opened.
-
+## Next Steps
+The MySQL server database is configured be accessed externaly by its static IP upon creation with the appropriate ports opened,
 The remaining Steps would be for you to Create the approriate Database and its admin users like the below:
 <br/>
 ```bash
