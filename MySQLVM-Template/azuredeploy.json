@@ -148,7 +148,9 @@
 
       "allowedValues": [
 
-
+        
+        "Standard_DS2",
+        
 
         "Standard_DS2_V2",
 
