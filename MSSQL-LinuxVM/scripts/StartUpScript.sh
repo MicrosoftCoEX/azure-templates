@@ -21,11 +21,11 @@ sudo pvcreate /dev/sdc1
 sudo vgcreate vg00 /dev/sdc1
 sudo lvcreate -L 1023 -n lv00 /dev/vg00
 sudo mkfs.xfs /dev/vg00/lv00
-sudo mkdir -p /var/lib/mysql
+sudo mkdir -p /var/lib/sql
 
 #Get the mounted device UUID by typing: 
 UUID=`sudo blkid | grep -i "/dev/mapper/vg00-lv00" | cut -d ' ' -f2`
-sudo echo "${UUID} /var/lib/mysql xfs defaults,nofail,noatime 0 0" >> /etc/fstab
+sudo echo "${UUID} /var/lib/sql xfs defaults,nofail,noatime 0 0" >> /etc/fstab
 # Mount the new drive
 sudo mount -a
 
@@ -91,6 +91,24 @@ echo Configuring UFW to allow traffic on port 1433...
 sudo ufw allow 1433/tcp
 sudo ufw reload
 
+mkdir /var/lib/sql/data
+mkdir /var/lib/sql/log
+
+# Change the owner and group of the data directory to the mssql user
+sudo chown mssql /var/lib/sql/data
+sudo chgrp mssql /var/lib/sql/data
+
+# Change the owner and group of the log directory to the mssql user
+sudo chown mssql /var/lib/sql/log
+sudo chgrp mssql /var/lib/sql/log
+
+#Use mssql-conf to change the default data directory with the set command
+sudo /opt/mssql/bin/mssql-conf set filelocation.defaultdatadir/var/lib/sql/data
+
+# Change the location of the log (.ldf) files of the new databases
+sudo /opt/mssql/bin/mssql-conf set filelocation.defaultlogdir /var/lib/sql/log
+
+sudo systemctl restart mssql-server
 
 # Restart SQL Server after installing:
 echo Restarting SQL Server...
