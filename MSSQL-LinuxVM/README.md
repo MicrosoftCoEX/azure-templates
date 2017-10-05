@@ -19,15 +19,13 @@ This Template creates the following:
 <br/>
 3) Disk mounted and configured by LVM
 <br/>
-4) Performance Tuning applied per <a href="https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-linux-classic-optimize-mysql?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json">  Microsoft Recommendations </a>
+4) Silent install of the latest MS SQL server
 <br/>
-5) Silent install of the latest SQL server
-<br/>
-6) Network Security Group with SQL and SSH ports opened
+5) Network Security Group with MS SQL and SSH ports opened
 <br>
-7) Creates a brand new Virtual Network (Working on having the option to select an existing one)
+6) Creates a brand new Virtual Network (Working on having the option to select an existing one)
 <br/>
-8) IP is set to be Static
+7) IP is set to be Static
 
 ## Parameters
 Accordingly, the parameters you fill are used for the following:
