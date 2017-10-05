@@ -39,16 +39,6 @@ Accordingly, the parameters you fill are used for the following:
 | Ubuntu Version  | List | 16.04 TLS | 
 | VM Size | List | Standard DS3_V2 to DS15_V2 |
 
-## Next Steps
-The MySQL server database is configured be accessed externaly by its static IP upon creation with the appropriate ports opened,
-The remaining Steps would be for you to Create the approriate Database and its admin users like the below:
-<br/>
-```bash
-$ mysql -u root -p
-$ CREATE DATABASE TestDB;
-$ GRANT ALL ON TestDB.* TO 'adminuser'@'%' IDENTIFIED BY 'pass@word1';
-$ exit
-```
 
 ## Validate
 1) Instal SQL Server Managmenet Studio on a Windows PC
@@ -62,4 +52,7 @@ $ exit
     Username and Password: Type in the ones you created form the above step that have access to a certain database or just login in with the root account
     </li>
 </ul>
-3) You will be successfully connected to the Server and start working on your Database
+<br/>
+3) Go to Options in the Connect Window, and Select "Trust Server Certificate"
+<br/>
+3) You will be successfully connected to the Server and can start working on creating Databases
