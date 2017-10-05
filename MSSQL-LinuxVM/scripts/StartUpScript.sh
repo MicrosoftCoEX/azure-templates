@@ -1,4 +1,4 @@
-mysqlPassword=$1
+MSSQL_SA_PASSWORD=$1
 
 #Switch to Root
 sudo su
@@ -29,57 +29,71 @@ sudo echo "${UUID} /var/lib/mysql xfs defaults,nofail,noatime 0 0" >> /etc/fstab
 # Mount the new drive
 sudo mount -a
 
-#####install mysql-server######
-sudo apt-get -y update
-echo "mysql-server mysql-server/root_password password $mysqlPassword" | sudo debconf-set-selections 
-echo "mysql-server mysql-server/root_password_again password $mysqlPassword" | sudo debconf-set-selections 
-sudo apt-get -y install mysql-server
-sudo mysqladmin -u root password "$mysqlPassword"
+##SQL Server Installation
 
-#####Exposing the Server#######
-sed -e '/bind-address/ s/^#*/#/' -i /etc/mysql/mysql.conf.d/mysqld.cnf
+# Product ID of the version of SQL server you're installing
+# Must be evaluation, developer, express, web, standard, enterprise, or your 25 digit product key
+# Defaults to developer
+MSSQL_PID='evaluation'
 
-#####Performance Tuning#######
-sed -e '/query_cache_size/ s/^#*/#/' -i /etc/mysql/mysql.conf.d/mysqld.cnf
-sed -e '/query_cache_limit/ s/^#*/#/' -i /etc/mysql/mysql.conf.d/mysqld.cnf
-sed -e '/thread_cache_size/ s/^#*/#/' -i /etc/mysql/mysql.conf.d/mysqld.cnf
+# Install SQL Server Agent (recommended)
+SQL_INSTALL_AGENT='y'
 
-sudo echo "max_connections = 5000
-query_cache_size = 0
-query_cache_limit = 64M
-innodb_buffer_pool_size = 10G 
+# Install SQL Server Full Text Search (optional)
+# SQL_INSTALL_FULLTEXT='y'
 
-innodb_thread_concurrency = 6 # = 2 * [numberofCPUs] + 2
-innodb_flush_log_at_trx_commit = 2
-innodb_file_per_table = 1
+# Create an additional user with sysadmin privileges (optional)
+# SQL_INSTALL_USER='<Username>'
+# SQL_INSTALL_USER_PASSWORD='<YourStrong!Passw0rd>'
 
-#innodb_log_file_size = 512M
-innodb_autoextend_increment=512
-innodb_log_buffer_size = 128M
-thread_cache_size = 32
-table_open_cache = 1024
-max_heap_table_size = 256M
-read_buffer_size = 2M" >> /etc/mysql/mysql.conf.d/mysqld.cnf
+if [ -z $MSSQL_SA_PASSWORD ]
+then
+  echo Environment variable MSSQL_SA_PASSWORD must be set for unattended install
+  exit 1
+fi
 
-sudo echo "noop" >/sys/block/sda/queue/scheduler
-sudo echo "noop" >/sys/block/sdc/queue/scheduler
-sudo sed -i 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash elevator=noop"/g' /etc/default/grub
-sudo update-grub
+echo Adding Microsoft repositories...
+sudo curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+repoargs="$(curl https://packages.microsoft.com/config/ubuntu/16.04/mssql-server-2017.list)"
+sudo add-apt-repository "${repoargs}"
+repoargs="$(curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list)"
+sudo add-apt-repository "${repoargs}"
 
-sudo service mysql restart
+sudo apt-get update -y
 
-sudo echo "* soft nofile 65536" >> /etc/security/limits.conf 
-sudo echo "* hard nofile 65536" >> /etc/security/limits.conf 
-sudo echo "* soft nproc 65536" >> /etc/security/limits.conf 
-sudo echo "* hard nproc 65536" >> /etc/security/limits.conf 
+sudo apt-get install -y mssql-server
 
-sudo ulimit -SHn 65536
-sudo ulimit -SHu 65536
+sudo MSSQL_SA_PASSWORD=$MSSQL_SA_PASSWORD \
+     MSSQL_PID=$MSSQL_PID \
+     /opt/mssql/bin/mssql-conf -n setup accept-eula
 
-sudo echo “ulimit -SHn 65536” >>/etc/rc.local
-sudo echo “ulimit -SHu 65536” >>/etc/rc.local
 
-#######Finalization#######
-service mysql restart
+sudo ACCEPT_EULA=Y apt-get install -y mssql-tools unixodbc-dev
+
+# Add SQL Server tools to the path by default:
+echo PATH="$PATH:/opt/mssql-tools/bin" >> ~/.bash_profile
+echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
+
+# Optional SQL Server Agent installation:
+if [ ! -z $SQL_INSTALL_AGENT ]
+then
+  sudo apt-get install -y mssql-server-agent
+fi
+
+# Optional SQL Server Full Text Search installation:
+if [ ! -z $SQL_INSTALL_FULLTEXT ]
+then
+    sudo apt-get install -y mssql-server-fts
+fi
+
+# Configure firewall to allow TCP port 1433:
+echo Configuring UFW to allow traffic on port 1433...
+sudo ufw allow 1433/tcp
+sudo ufw reload
+
+
+# Restart SQL Server after installing:
+echo Restarting SQL Server...
+sudo systemctl restart mssql-server
 
 
