@@ -31,6 +31,17 @@ sudo mount -a
 
 ##SQL Server Installation
 
+mkdir /var/lib/sql/data
+mkdir /var/lib/sql/log
+
+# Change the owner and group of the data directory to the mssql user
+sudo chown mssql /var/lib/sql/data
+sudo chgrp mssql /var/lib/sql/data
+
+# Change the owner and group of the log directory to the mssql user
+sudo chown mssql /var/lib/sql/log
+sudo chgrp mssql /var/lib/sql/log
+
 # Product ID of the version of SQL server you're installing
 # Must be evaluation, developer, express, web, standard, enterprise, or your 25 digit product key
 # Defaults to developer
@@ -65,6 +76,8 @@ sudo apt-get install -y mssql-server
 
 sudo MSSQL_SA_PASSWORD=$MSSQL_SA_PASSWORD \
      MSSQL_PID=$MSSQL_PID \
+     MSSQL_DATA_DIR=/var/lib/sql/data \
+     MSSQL_LOG_DIR=/var/lib/sql/log \
      /opt/mssql/bin/mssql-conf -n setup accept-eula
 
 
@@ -91,22 +104,6 @@ echo Configuring UFW to allow traffic on port 1433...
 sudo ufw allow 1433/tcp
 sudo ufw reload
 
-mkdir /var/lib/sql/data
-mkdir /var/lib/sql/log
-
-# Change the owner and group of the data directory to the mssql user
-sudo chown mssql /var/lib/sql/data
-sudo chgrp mssql /var/lib/sql/data
-
-# Change the owner and group of the log directory to the mssql user
-sudo chown mssql /var/lib/sql/log
-sudo chgrp mssql /var/lib/sql/log
-
-#Use mssql-conf to change the default data directory with the set command
-sudo /opt/mssql/bin/mssql-conf set filelocation.defaultdatadir/var/lib/sql/data
-
-# Change the location of the log (.ldf) files of the new databases
-sudo /opt/mssql/bin/mssql-conf set filelocation.defaultlogdir /var/lib/sql/log
 
 sudo systemctl restart mssql-server
 
