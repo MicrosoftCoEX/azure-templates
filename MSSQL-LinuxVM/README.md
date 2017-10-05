@@ -1,13 +1,13 @@
 
 
-# MySQL Server on Ubuntu VM - Performance Tuned and with DataDisks Attached
+# Microsoft SQL Server on Ubuntu VM - Performance Tuned and with DataDisks Attached
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoftCoEX%2Fazure-templates%2Fmaster%2FMySQLVM-Template%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> <a href="http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoftCoEX%2Fazure-templates%2Fmaster%2FMySQLVM-Template%2Fazuredeploy.json" target="_blank">
     <img src="http://armviz.io/visualizebutton.png"/>
 </a>
 
 
-This template uses deploys a Standalone MySQL server on a linux VM with a custom script extension to mount a data disk, install mysql server and apply some performance enhancmenets, <b>Execution time is less than 5 minutes</b>.
+This template uses deploys a Standalone SQL server on a linux VM with a custom script extension to mount a data disk, install sql server and apply some performance enhancmenets, <b>Execution time is less than 5 minutes</b>.
 <br/>
 <br/>
 ## Template Details
@@ -21,9 +21,9 @@ This Template creates the following:
 <br/>
 4) Performance Tuning applied per <a href="https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-linux-classic-optimize-mysql?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json">  Microsoft Recommendations </a>
 <br/>
-5) Silent install of the latest MySQL server
+5) Silent install of the latest SQL server
 <br/>
-6) Network Security Group with MySQL and SSH ports opened
+6) Network Security Group with SQL and SSH ports opened
 <br>
 7) Creates a brand new Virtual Network (Working on having the option to select an existing one)
 <br/>
@@ -37,8 +37,8 @@ Accordingly, the parameters you fill are used for the following:
 | vmName  | String | Name for the Virtual Machine |
 | adminUsername  | String | Username for SSH Login |
 | adminPassword | SecureString | Password for the SSH Login |
-| mysqlPasswrd | String | Password for the MySQL Server |
-| Ubuntu Version  | List | 14.04 TLS / 16.04 TLS | 
+| sqlPasswrd | String | Password for the MySQL Server |
+| Ubuntu Version  | List | 16.04 TLS | 
 | VM Size | List | Standard DS3_V2 to DS15_V2 |
 
 ## Next Steps
@@ -53,7 +53,7 @@ $ exit
 ```
 
 ## Validate
-1) Instal MySQL Workbench
+1) Instal SQL Server Managmenet Studio on a Windows PC
 <br/>
 2) Create a new connection
 <ul>
