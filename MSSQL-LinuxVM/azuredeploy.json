@@ -258,7 +258,7 @@
 
 
 
-      "defaultValue": "https://raw.githubusercontent.com/MicrosoftCoEX/azure-templates/master/MySQLVM-Template",
+      "defaultValue": "https://raw.githubusercontent.com/MicrosoftCoEX/azure-templates/master/MSSQL-LinuxVM",
 
 
 
