@@ -86,7 +86,7 @@
 
 
 
-    "mysqlPassword": {
+    "mssqlPassword": {
 
 
 
@@ -652,7 +652,7 @@
                         }
                     },
                     {
-                        "name": "MySqlRule",
+                        "name": "MSSqlRule",
                         "properties": {
                             "protocol": "TCP",
                             "sourcePortRange": "*",
@@ -943,7 +943,7 @@
 
 
 
-          "commandToExecute": "[concat('bash StartUpScript.sh ', parameters('mysqlPassword'))]"
+          "commandToExecute": "[concat('bash StartUpScript.sh ', parameters('mssqlPassword'))]"
 
 
 
