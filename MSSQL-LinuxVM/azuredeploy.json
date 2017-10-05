@@ -656,7 +656,7 @@
                         "properties": {
                             "protocol": "TCP",
                             "sourcePortRange": "*",
-                            "destinationPortRange": "3306",
+                            "destinationPortRange": "1433",
                             "sourceAddressPrefix": "*",
                             "destinationAddressPrefix": "*",
                             "access": "Allow",
