@@ -34,14 +34,6 @@ sudo mount -a
 mkdir /var/lib/sql/data
 mkdir /var/lib/sql/log
 
-# Change the owner and group of the data directory to the mssql user
-sudo chown mssql /var/lib/sql/data
-sudo chgrp mssql /var/lib/sql/data
-
-# Change the owner and group of the log directory to the mssql user
-sudo chown mssql /var/lib/sql/log
-sudo chgrp mssql /var/lib/sql/log
-
 # Product ID of the version of SQL server you're installing
 # Must be evaluation, developer, express, web, standard, enterprise, or your 25 digit product key
 # Defaults to developer
@@ -103,6 +95,14 @@ fi
 echo Configuring UFW to allow traffic on port 1433...
 sudo ufw allow 1433/tcp
 sudo ufw reload
+
+# Change the owner and group of the data directory to the mssql user
+sudo chown mssql /var/lib/sql/data
+sudo chgrp mssql /var/lib/sql/data
+
+# Change the owner and group of the log directory to the mssql user
+sudo chown mssql /var/lib/sql/log
+sudo chgrp mssql /var/lib/sql/log
 
 
 sudo systemctl restart mssql-server
