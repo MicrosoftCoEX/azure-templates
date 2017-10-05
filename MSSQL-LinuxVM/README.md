@@ -55,6 +55,5 @@ Accordingly, the parameters you fill are used for the following:
 <br/>
 3) Go to Options in the Connect Window, and Select "Trust Server Certificate"
 ![alt text](https://raw.githubusercontent.com/MicrosoftCoEX/azure-templates/master/MSSQL-LinuxVM/connectionOptions.png)
-[adasd](/connectionOptions.png)
 <br/>
 3) You will be successfully connected to the Server and can start working on creating Databases
